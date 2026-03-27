@@ -19,15 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="线程 $f_{i , j}$">
+    <meta name="description" content="进程的定义  程序：是静态的，就是个存放在磁盘中的 可执行文件 进程：是动态的，是程序的一次执行过程。比如，打开 QQ 三次，就会出现 3 个进程，但 QQ.exe 为一个程序。 进程包含：PCB，程序段、数据段。程序段：程序的代码。数据段：运行过程中产生的各种数据（如程序中定义的变量） PCB 是给操作系统用的，程序段、数据段是给进程自己用的  进程的状态与转换  创建态（new） 就绪态（re">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统笔记">
 <meta property="og:url" content="http://example.com/2026/03/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="线程 $f_{i , j}$">
+<meta property="og:description" content="进程的定义  程序：是静态的，就是个存放在磁盘中的 可执行文件 进程：是动态的，是程序的一次执行过程。比如，打开 QQ 三次，就会出现 3 个进程，但 QQ.exe 为一个程序。 进程包含：PCB，程序段、数据段。程序段：程序的代码。数据段：运行过程中产生的各种数据（如程序中定义的变量） PCB 是给操作系统用的，程序段、数据段是给进程自己用的  进程的状态与转换  创建态（new） 就绪态（re">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-26T13:55:20.000Z">
-<meta property="article:modified_time" content="2026-03-27T01:53:43.060Z">
+<meta property="article:modified_time" content="2026-03-27T02:24:20.112Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
@@ -45,6 +45,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -66,6 +68,10 @@
     <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
+
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css">
 
 
 
@@ -326,7 +332,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11 words
+          481 words
         
       </span>
     
@@ -337,7 +343,7 @@
         
         
         
-          1 mins
+          5 mins
         
       </span>
     
@@ -381,8 +387,29 @@
             
               <div class="markdown-body">
                 
-                <h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><hr>
-<p>$f_{i , j}$</p>
+                <h4 id="进程的定义"><a href="#进程的定义" class="headerlink" title="进程的定义"></a>进程的定义</h4><hr>
+<ul>
+<li>程序：是静态的，就是个存放在磁盘中的 <strong>可执行文件</strong></li>
+<li>进程：是动态的，是程序的一次执行过程。比如，打开 <code>QQ</code> 三次，就会出现 <code>3</code> 个进程，但 <code>QQ.exe</code> 为一个程序。</li>
+<li>进程包含：<code>PCB</code>，程序段、数据段。程序段：程序的代码。数据段：运行过程中产生的各种数据（如程序中定义的变量）</li>
+<li><code>PCB</code> 是给操作系统用的，程序段、数据段是给进程自己用的</li>
+</ul>
+<h4 id="进程的状态与转换"><a href="#进程的状态与转换" class="headerlink" title="进程的状态与转换"></a>进程的状态与转换</h4><hr>
+<ul>
+<li>创建态（<code>new</code>）</li>
+<li>就绪态（<code>ready</code>）</li>
+<li><p>运行态（<code>running</code>）</p>
+</li>
+<li><p>阻塞态（<code>waiting</code>）：比如，当系统请求打印机时，但打印机正在忙，同时又不能一直占用 <code>cpu</code> 资源，所以就进入 <code>waiting</code> 状态。</p>
+</li>
+<li>终止态（<code>Terminated</code> ）。</li>
+</ul>
+<p>当进程创建完毕后，进入就绪态，<code>new -&gt; ready</code></p>
+<p>进程被调度，<code>ready -&gt; running</code></p>
+<p>处于阻塞态的进程，它等待的事件发生了（比如打印机），进程从阻塞态回到就绪态。<code>waiting -&gt; ready</code></p>
+<p>时间片到，进程被剥夺 <code>cpu</code> 的使用权，<code>running -&gt; ready</code></p>
+<p>进程用 <strong>系统调用</strong> 的方式申请某种系统的资源，或者请求等待某个时间发生。</p>
+<p>进程 <code>PCB</code> 中，会有一个变量 <code>state</code> 来表示进程的当前状态。</p>
 
                 
               </div>
@@ -537,6 +564,11 @@
   
 
 
+  
+  
+
+
+
 
 
 
@@ -574,6 +606,12 @@
 
     
 
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}]})})</script>
+        </div>
+      </div>
     
   </main>
 
@@ -795,6 +833,11 @@
   <script  src="/js/local-search.js" ></script>
 
 
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"></script>
 
 
 
