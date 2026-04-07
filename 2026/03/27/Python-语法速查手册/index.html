@@ -19,22 +19,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="计算机网络需要记忆的部分比较多，用来记录一些零碎的知识点">
+    <meta name="description" content="Python 的语法实在太多，记录一些 Python 代码块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络笔记.md">
-<meta property="og:url" content="http://example.com/2026/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Python 语法速查手册">
+<meta property="og:url" content="http://example.com/2026/03/27/Python-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="计算机网络需要记忆的部分比较多，用来记录一些零碎的知识点">
+<meta property="og:description" content="Python 的语法实在太多，记录一些 Python 代码块">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-03-26T13:06:15.000Z">
-<meta property="article:modified_time" content="2026-03-29T02:20:22.630Z">
+<meta property="article:published_time" content="2026-03-27T09:57:38.000Z">
+<meta property="article:modified_time" content="2026-03-28T10:33:04.159Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="语法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>计算机网络笔记.md - Hexo</title>
+  <title>Python 语法速查手册 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -309,7 +310,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计算机网络笔记.md"></span>
+            <span id="subtitle" data-typed-text="Python 语法速查手册"></span>
           
         </div>
 
@@ -320,8 +321,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-03-26 21:06" pubdate>
-          March 26, 2026 pm
+        <time datetime="2026-03-27 17:57" pubdate>
+          March 27, 2026 pm
         </time>
       </span>
     
@@ -332,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          1.2k words
         
       </span>
     
@@ -343,7 +344,7 @@
         
         
         
-          16 mins
+          11 mins
         
       </span>
     
@@ -382,249 +383,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">计算机网络笔记.md</h1>
+            <h1 id="seo-header">Python 语法速查手册</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="传输介质">传输介质</h3>
-<hr>
-<h4 id="有线传输介质（Guided-Media）">有线传输介质（<code>Guided Media</code>）</h4>
-<p>双绞线（<code>Twisted-pair cable</code>）：</p>
-<ul>
-<li>两根导线相互 <strong>绞合</strong> 而成：
-<ul>
-<li>有屏蔽层（<strong>STP</strong>），双绞线外边裹着一个 Metal shield（金属屏蔽层）</li>
-<li>无屏蔽层（<strong>UTP</strong>），双绞线外边只有一个 <code>Plastic Cover</code>（塑料绝缘层）</li>
-</ul>
-</li>
-<li>抗干扰能力较好。<strong>绞合</strong>，<strong>屏蔽层</strong> 可以提升抗电磁干扰能力</li>
-</ul>
-<p>同轴电缆（<code>Coaxical cable</code>）：</p>
-<ul>
-<li>
-<p>主要构成：<strong>内导体</strong>（Inner conductor，用于传输信号）+ <strong>外导体屏蔽层</strong>（Outer conductor sheld，用于抗电磁干扰）</p>
-</li>
-<li>
-<p><strong>内导体越粗，电阻越低，传输过程中信号衰减越少，传输距离越长</strong></p>
-</li>
-</ul>
-<p>光纤（<code>Fibre-optic cable</code>）：</p>
-<ul>
-<li>
-<p>利用光的 <strong>全反射</strong> 特性</p>
-</li>
-<li>
-<p>单模光纤（single mode）（SMF）：只有 <strong>一条光线</strong> 在一根光纤中传输，适合 <strong>长距离</strong> 传输，信号损耗小</p>
-</li>
-<li>
-<p>多模光纤（Multiple mode）（MMF）：<strong>多条光线</strong> 在一根光纤中传输，适合 <strong>近距离传输</strong>，远距离传输容易失真</p>
-</li>
-</ul>
-<p>以太网对有线传输介质的命名规则：</p>
-<ul>
-<li>
-<p><code>Baseband</code>，基带传输，即传输数字信号（采用曼彻斯特编码）</p>
-</li>
-<li>
-<p>速度+<code>Base</code>+介质信息</p>
-<ul>
-<li>
-<p><code>10Base5</code>：<code>10Mbps</code>，同轴电缆，最长传输距离 <code>500m</code></p>
-</li>
-<li>
-<p><code>10Base2</code>：<code>10Mbps</code>，同轴电缆，最长传输距离 <code>200m</code></p>
-</li>
-<li>
-<p><code>10BaseF*</code>：<code>10Mbps</code>，光纤（fibre）。*可以是其他信息</p>
-</li>
-<li>
-<p><code>10BaseT*</code>：<code>10Mbps</code>，双绞线（twisted pair）。可以是其他信息</p>
-</li>
-<li>
-<p><code>1000BaseT1</code>：<code>1000Mbps</code>，双绞线</p>
-</li>
-<li>
-<p><code>2.5GBaseT</code>：<code>2.5Gbps</code>，双绞线</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="无线传输介质">无线传输介质</h4>
-<p>无线电波（Radio Waves）：</p>
-<ul>
-<li>
-<p><strong>穿透能力强</strong>，<strong>传输距离长</strong>，<strong>信号指向性弱</strong></p>
-</li>
-<li>
-<p>手机信号、wifi</p>
-</li>
-</ul>
-<p>微波通信（Microwaves）：</p>
-<ul>
-<li>
-<p><strong>频率带宽高，信号指向性强</strong></p>
-</li>
-<li>
-<p>卫星通信，卫星作为信号中继器，传播时延较大</p>
-</li>
-</ul>
-<p>红外通信（Infrared）</p>
-<ul>
-<li>电视遥控器，信号指向性强</li>
-</ul>
-<p>本质上都是用电磁波，电磁波公式：$C = \lambda F$，$C$ 为光速，$\lambda$ 为波长，$F$ 为频率</p>
-<ul>
-<li>
-<p>电磁波频率、波长呈反比关系</p>
-</li>
-<li>
-<p><strong>频率越高（波长越短），数据传输能力越强</strong></p>
-</li>
-<li>
-<p>波长越短，“信号 <strong>指向性</strong> ” 越强，信号越趋于趋于直线传播</p>
-</li>
-<li>
-<p>波长越长，信号“绕射性”越好，信号“穿墙”能力越强</p>
-</li>
-</ul>
-<p>长波更适合长距离、非直线通信。</p>
-<p>短波更适合短距离，<strong>高速</strong> 通信，若用于长距离通信需要建立 <strong>中继站</strong>，短波信号 <strong>指向性</strong> 强，要求信号接收器“对准”信号源。</p>
-<p>卫星通信属于 <strong>短波（或微波）</strong> 通信</p>
-<h4 id="物理层接口特性">物理层接口特性</h4>
-<ul>
-<li>
-<p>电器特性：指明在接口电缆的各条线上出现的电压范围、传输速率、距离限制等等。</p>
-</li>
-<li>
-<p>功能特性：指明某条线上出现的某一个电平的意义</p>
-</li>
-</ul>
-<h3 id="数据链路层">数据链路层</h3>
-<hr>
-<p>数据链路层提供的服务（service 功能）</p>
-<ul>
-<li>
-<p>封装成帧（Framing）</p>
-<ul>
-<li>
-<p>帧定界：如何让对方能够确定帧的界限</p>
-</li>
-<li>
-<p>透明传输：接收方链路层要从收到的帧内回复原始 <code>SDU</code>，让网络层 “感受不到” 将分组成帧的过程</p>
-</li>
-</ul>
-</li>
-<li>
-<p>可靠传输（Reliable delivery between adjacent nodes）</p>
-<ul>
-<li>
-<p>帧丢失。发送<code>1234</code>，收到 <code>123</code></p>
-</li>
-<li>
-<p>帧重复。发送 <code>1234</code>，收到 <code>12334</code></p>
-</li>
-<li>
-<p>帧失序。发送 <code>1234</code>，收到 <code>1324</code></p>
-</li>
-<li>
-<p>流量控制（Flow control）</p>
-</li>
-</ul>
-</li>
-<li>
-<p>差错控制</p>
-<ul>
-<li>
-<p>差错检测（Error Detection）</p>
-</li>
-<li>
-<p>差错纠正（Error Correction）</p>
-</li>
-</ul>
-</li>
-<li>
-<p>流量控制</p>
-<ul>
-<li>流量控制：控制发送方发送的帧的速率别太快，让接收方来得及接受</li>
-</ul>
-</li>
-<li>
-<p>半双工和全双工：</p>
-<ul>
-<li>
-<p>Half-duplex（半双工），链路两端的节点都具备发送和接受的能力，但同一时刻只能有一个方向在传输</p>
-</li>
-<li>
-<p>Full-duplex（全双工），链路的两端都可以同时发送和接受数据，并且互不干扰</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="封装成帧">封装成帧</h4>
-<p>字符计数法（Character count）：</p>
-<ul>
-<li>在每一个帧的开头，用一个 <strong>定长计数字段</strong> 表示帧长</li>
-</ul>
-<p>字节填充法（Flag Bytes with Byte Stuffing）：</p>
-<ul>
-<li>
-<p>控制字符 <code>SOH</code>（start of header）</p>
-</li>
-<li>
-<p>控制字符 <code>EOT</code>（end of transmission）</p>
-</li>
-<li>
-<p>转义字符 <code>ESC</code>（Escape Character），把和控制字符，<strong>或者转义字符</strong> 一样的字符转义，表示其为普通的数据</p>
-</li>
-</ul>
-<p>零比特填充法（Bit Stuffing）：</p>
-<ul>
-<li>
-<p>特定比特串表示帧的开始/结束</p>
-</li>
-<li>
-<p>发送方每当遇到连续的 <code>5</code> 个 <code>1</code> 时，就填充一个 <code>0</code></p>
-</li>
-<li>
-<p>接收方每遇到连续的 <code>5</code> 个 <code>1</code>，就删掉后面的 <code>0</code></p>
-</li>
-</ul>
-<h4 id="错误检测">错误检测</h4>
-<p>错误类型（Type of Error）：</p>
-<ul>
-<li>
-<p>single-bit error</p>
-</li>
-<li>
-<p>burst error</p>
-</li>
-</ul>
-<p>检错编码</p>
-<ul>
-<li>
-<p>错误检测（Error Detection）：</p>
-<ul>
-<li>
-<p>奇偶校验码（Parity Checking）</p>
-</li>
-<li>
-<p>循环冗余校验码 CRC</p>
-</li>
-</ul>
-</li>
-<li>
-<p>错误纠正</p>
-<ul>
-<li>
-<p><strong>Block Coding</strong></p>
-</li>
-<li>
-<p><strong>Hamming Code</strong></p>
-</li>
-</ul>
-</li>
-</ul>
+                <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># python 格式化输出</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;%s has %d quote types.&#x27;</span> % (<span class="hljs-string">&#x27;Python&#x27;</span>, <span class="hljs-number">2</span>))<br><span class="hljs-comment"># 或者</span><br>text = <span class="hljs-string">&quot;&#123;&#125; has &#123;&#125; quote types.&quot;</span><br><span class="hljs-built_in">print</span>(text.<span class="hljs-built_in">format</span>(<span class="hljs-string">&#x27;Python&#x27;</span> , <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  在一行读入 a b c d</span><br>a , b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span> , <span class="hljs-built_in">input</span>().split(<span class="hljs-string">&#x27; &#x27;</span>))<br><br><span class="hljs-keyword">if</span> a % b == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> b % a == <span class="hljs-number">0</span> : <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Sao Multiplos&quot;</span>)<br><span class="hljs-keyword">else</span> : <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Nao sao Multiplos&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 实现了删除一个集合内元素的功能</span><br>users = &#123;<span class="hljs-string">&#x27;Hans&#x27;</span>: <span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-string">&#x27;Éléonore&#x27;</span>: <span class="hljs-string">&#x27;inactive&#x27;</span>, <span class="hljs-string">&#x27;景太郎&#x27;</span>: <span class="hljs-string">&#x27;active&#x27;</span>&#125;<br><br><span class="hljs-keyword">for</span> key, values <span class="hljs-keyword">in</span> users.copy().items() : <br>    <span class="hljs-keyword">if</span> key == <span class="hljs-string">&#x27;inactive&#x27;</span> : <br>        <span class="hljs-keyword">del</span> users[key]<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span> , <span class="hljs-number">10</span>))<br><span class="hljs-comment"># 生成 [0 , 1 , 2 , ... , 9] 的列表</span><br><br><span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">9</span> , -<span class="hljs-number">1</span> , -<span class="hljs-number">1</span>))<br><span class="hljs-comment"># 生成 [9 , 8 , 7 , ... , 0] 的列表</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">a</span>) : <br>    a = <span class="hljs-number">20</span><br><br>a = <span class="hljs-number">10</span><br>f(a) <br><span class="hljs-built_in">print</span>(a) <span class="hljs-comment"># 实际 a 的值还是 10，f(a) 不改变 a 的值</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># reversed 函数</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">reversed</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>)):<br>    <span class="hljs-built_in">print</span>(i)<br><br><span class="hljs-comment"># sorted 函数</span><br>basket = [<span class="hljs-string">&#x27;apple&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;apple&#x27;</span>, <span class="hljs-string">&#x27;pear&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;banana&#x27;</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(basket):<br>    <span class="hljs-built_in">print</span>(i)<br><br><span class="hljs-comment"># 转换成 set()，去重</span><br>basket = [<span class="hljs-string">&#x27;apple&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;apple&#x27;</span>, <span class="hljs-string">&#x27;pear&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;banana&#x27;</span>]<br><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(basket)):<br>    <span class="hljs-built_in">print</span>(f)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">2</span>]<br>a.sort()<br><span class="hljs-built_in">print</span>(a) <span class="hljs-comment"># 输出 [1 , 2 , 3]</span><br><br>a.reserse() <br><span class="hljs-built_in">print</span>(a) <span class="hljs-comment"># 输出 [3 , 2 , 1]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]<br><br>a[::<span class="hljs-number">1</span>] <span class="hljs-comment"># 每 1 个取 1 个</span><br>a[::<span class="hljs-number">2</span>] <span class="hljs-comment"># 每 2 个取 1 个</span><br>a[::<span class="hljs-number">3</span>] <span class="hljs-comment"># 每 3 个取 1 个</span><br>a[::-<span class="hljs-number">1</span>] <span class="hljs-comment"># 倒着取，每 1 个取 1 个</span><br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -658,7 +429,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="print-no-link">#计算机网络</a>
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/%E8%AF%AD%E6%B3%95/" class="print-no-link">#语法</a>
       
     </div>
   
@@ -670,8 +443,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计算机网络笔记.md</div>
-      <div>http://example.com/2026/03/26/计算机网络笔记/</div>
+      <div>Python 语法速查手册</div>
+      <div>http://example.com/2026/03/27/Python-语法速查手册/</div>
     </div>
     <div class="license-meta">
       
@@ -683,7 +456,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 26, 2026</div>
+          <div>March 27, 2026</div>
         </div>
       
       
@@ -715,15 +488,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/03/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="操作系统笔记">
+                      <a href="/2026/03/30/%E8%A7%82%E7%9C%8B%E7%AC%94%E8%AE%B0/" title="观看笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统笔记</span>
+                        <span class="hidden-mobile">观看笔记</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2026/03/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="操作系统笔记">
+                        <span class="hidden-mobile">操作系统笔记</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

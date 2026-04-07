@@ -19,22 +19,24 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="计算机网络需要记忆的部分比较多，用来记录一些零碎的知识点">
+    <meta name="description" content="要面试了，突击一把图像生成加速">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络笔记.md">
-<meta property="og:url" content="http://example.com/2026/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="图像生成笔记">
+<meta property="og:url" content="http://example.com/2026/03/31/Diffusion_model/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="计算机网络需要记忆的部分比较多，用来记录一些零碎的知识点">
+<meta property="og:description" content="要面试了，突击一把图像生成加速">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-03-26T13:06:15.000Z">
-<meta property="article:modified_time" content="2026-03-29T02:20:22.630Z">
+<meta property="article:published_time" content="2026-03-31T02:10:13.000Z">
+<meta property="article:modified_time" content="2026-04-07T09:48:20.341Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="AIGC">
+<meta property="article:tag" content="图像生成">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>计算机网络笔记.md - Hexo</title>
+  <title>图像生成笔记 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -309,7 +311,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计算机网络笔记.md"></span>
+            <span id="subtitle" data-typed-text="图像生成笔记"></span>
           
         </div>
 
@@ -320,8 +322,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-03-26 21:06" pubdate>
-          March 26, 2026 pm
+        <time datetime="2026-03-31 10:10" pubdate>
+          March 31, 2026 am
         </time>
       </span>
     
@@ -332,7 +334,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          1.2k words
         
       </span>
     
@@ -343,7 +345,7 @@
         
         
         
-          16 mins
+          10 mins
         
       </span>
     
@@ -382,247 +384,53 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">计算机网络笔记.md</h1>
+            <h1 id="seo-header">图像生成笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="传输介质">传输介质</h3>
-<hr>
-<h4 id="有线传输介质（Guided-Media）">有线传输介质（<code>Guided Media</code>）</h4>
-<p>双绞线（<code>Twisted-pair cable</code>）：</p>
-<ul>
-<li>两根导线相互 <strong>绞合</strong> 而成：
-<ul>
-<li>有屏蔽层（<strong>STP</strong>），双绞线外边裹着一个 Metal shield（金属屏蔽层）</li>
-<li>无屏蔽层（<strong>UTP</strong>），双绞线外边只有一个 <code>Plastic Cover</code>（塑料绝缘层）</li>
-</ul>
-</li>
-<li>抗干扰能力较好。<strong>绞合</strong>，<strong>屏蔽层</strong> 可以提升抗电磁干扰能力</li>
-</ul>
-<p>同轴电缆（<code>Coaxical cable</code>）：</p>
-<ul>
-<li>
-<p>主要构成：<strong>内导体</strong>（Inner conductor，用于传输信号）+ <strong>外导体屏蔽层</strong>（Outer conductor sheld，用于抗电磁干扰）</p>
-</li>
-<li>
-<p><strong>内导体越粗，电阻越低，传输过程中信号衰减越少，传输距离越长</strong></p>
-</li>
-</ul>
-<p>光纤（<code>Fibre-optic cable</code>）：</p>
-<ul>
-<li>
-<p>利用光的 <strong>全反射</strong> 特性</p>
-</li>
-<li>
-<p>单模光纤（single mode）（SMF）：只有 <strong>一条光线</strong> 在一根光纤中传输，适合 <strong>长距离</strong> 传输，信号损耗小</p>
-</li>
-<li>
-<p>多模光纤（Multiple mode）（MMF）：<strong>多条光线</strong> 在一根光纤中传输，适合 <strong>近距离传输</strong>，远距离传输容易失真</p>
-</li>
-</ul>
-<p>以太网对有线传输介质的命名规则：</p>
+                <p>Diffusion Model:</p>
+<p>就和雕刻一样，其实雕像已经在里面了，你只是去掉不要的部分</p>
+<p>Denoise 不仅要吃当前的图片，还要吃一个数字，表示当前的 step</p>
+<p>Noise Predictor：</p>
+<p>不仅要吃当前的图片，还要吃一个数字，表示当前的 step，生成一个杂讯（noise）</p>
+<p>Forward Process（Diffusion Process）：</p>
+<p>Text-to-Image：</p>
+<p>把文字加到 Denoise 的模组（喂给 Noise Predictor）</p>
+<p>Text Encoder：把文字变成向量</p>
+<p>Generation Model：吃一份杂讯（noise），吃文字的 encoder，产生中间产物（图片的压缩版本）</p>
+<p>Decoder：把中间产物变成图片</p>
+<p>通常三个 model 分开训练</p>
+<p>Text Encoder: BERT, GPT</p>
+<p>FID 越小，图片生成的质量越好</p>
+<p>CLIP Score 越大，图片生成的质量越好</p>
+<p>越往右下角走，图片生成的质量越好</p>
+<p>CLIP：文字经过 Text Encoder 产生一个向量，图片经过 Image Encoder 产生一个向量。如果这个文字是在描述这个图片，这两个向量要越近越好，否则越远越好。</p>
+<p>Decoder: 训练不需要文字资料，可以凭借大量影像资料独立训练</p>
+<p>中间产物为小图：把手上能找得到的影像都拿出来，然后把他们做 down sampling 变成小图，你就有成对的资料，你就可以训练 decoder，把小图变成大图</p>
+<p>中年产物不是小图，而是某种 later representation：</p>
+<p>把 later representation 当作输入，把其还原成图片</p>
+<p>训练一个 Auto-encoder：</p>
+<p>图片，经过一个 Encoder, 变成一个 later representation, 通过 decoder 还原原来的图片，让输入和输出越接近越好。</p>
+<p>训练完之后，就可以把这个 decoder 拿出来用，这个 decoder 就可以吃一个 later representation，还原一张图片</p>
+<p>later representation 是一张小图，或者一张人类看不懂的图（$h \times w \times c$），$c$ 表示的是 channel，表示在这图小图上每一个位置是用多少个数字来表示</p>
+<p>generation model 吃文字的 representation，产生一个压缩的结果，产生一个中间产物</p>
+<p>腾讯混元推理加速：</p>
 <ul>
 <li>
-<p><code>Baseband</code>，基带传输，即传输数字信号（采用曼彻斯特编码）</p>
+<p>步数多：</p>
+<p>扩散模型需要一步步去噪，每步都要跑一次大模型。</p>
+<p>原来需要 50 步一步一步去噪，现在只需要 8 步：蒸馏训练出一个“跳步”的学生模型</p>
 </li>
 <li>
-<p>速度+<code>Base</code>+介质信息</p>
-<ul>
-<li>
-<p><code>10Base5</code>：<code>10Mbps</code>，同轴电缆，最长传输距离 <code>500m</code></p>
+<p>模型大：</p>
+<p>参数太多，读写显存开销大。</p>
+<p>量化（把参数压小）、MoE（每次只使用一部分参数）</p>
 </li>
 <li>
-<p><code>10Base2</code>：<code>10Mbps</code>，同轴电缆，最长传输距离 <code>200m</code></p>
-</li>
-<li>
-<p><code>10BaseF*</code>：<code>10Mbps</code>，光纤（fibre）。*可以是其他信息</p>
-</li>
-<li>
-<p><code>10BaseT*</code>：<code>10Mbps</code>，双绞线（twisted pair）。可以是其他信息</p>
-</li>
-<li>
-<p><code>1000BaseT1</code>：<code>1000Mbps</code>，双绞线</p>
-</li>
-<li>
-<p><code>2.5GBaseT</code>：<code>2.5Gbps</code>，双绞线</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="无线传输介质">无线传输介质</h4>
-<p>无线电波（Radio Waves）：</p>
-<ul>
-<li>
-<p><strong>穿透能力强</strong>，<strong>传输距离长</strong>，<strong>信号指向性弱</strong></p>
-</li>
-<li>
-<p>手机信号、wifi</p>
-</li>
-</ul>
-<p>微波通信（Microwaves）：</p>
-<ul>
-<li>
-<p><strong>频率带宽高，信号指向性强</strong></p>
-</li>
-<li>
-<p>卫星通信，卫星作为信号中继器，传播时延较大</p>
-</li>
-</ul>
-<p>红外通信（Infrared）</p>
-<ul>
-<li>电视遥控器，信号指向性强</li>
-</ul>
-<p>本质上都是用电磁波，电磁波公式：$C = \lambda F$，$C$ 为光速，$\lambda$ 为波长，$F$ 为频率</p>
-<ul>
-<li>
-<p>电磁波频率、波长呈反比关系</p>
-</li>
-<li>
-<p><strong>频率越高（波长越短），数据传输能力越强</strong></p>
-</li>
-<li>
-<p>波长越短，“信号 <strong>指向性</strong> ” 越强，信号越趋于趋于直线传播</p>
-</li>
-<li>
-<p>波长越长，信号“绕射性”越好，信号“穿墙”能力越强</p>
-</li>
-</ul>
-<p>长波更适合长距离、非直线通信。</p>
-<p>短波更适合短距离，<strong>高速</strong> 通信，若用于长距离通信需要建立 <strong>中继站</strong>，短波信号 <strong>指向性</strong> 强，要求信号接收器“对准”信号源。</p>
-<p>卫星通信属于 <strong>短波（或微波）</strong> 通信</p>
-<h4 id="物理层接口特性">物理层接口特性</h4>
-<ul>
-<li>
-<p>电器特性：指明在接口电缆的各条线上出现的电压范围、传输速率、距离限制等等。</p>
-</li>
-<li>
-<p>功能特性：指明某条线上出现的某一个电平的意义</p>
-</li>
-</ul>
-<h3 id="数据链路层">数据链路层</h3>
-<hr>
-<p>数据链路层提供的服务（service 功能）</p>
-<ul>
-<li>
-<p>封装成帧（Framing）</p>
-<ul>
-<li>
-<p>帧定界：如何让对方能够确定帧的界限</p>
-</li>
-<li>
-<p>透明传输：接收方链路层要从收到的帧内回复原始 <code>SDU</code>，让网络层 “感受不到” 将分组成帧的过程</p>
-</li>
-</ul>
-</li>
-<li>
-<p>可靠传输（Reliable delivery between adjacent nodes）</p>
-<ul>
-<li>
-<p>帧丢失。发送<code>1234</code>，收到 <code>123</code></p>
-</li>
-<li>
-<p>帧重复。发送 <code>1234</code>，收到 <code>12334</code></p>
-</li>
-<li>
-<p>帧失序。发送 <code>1234</code>，收到 <code>1324</code></p>
-</li>
-<li>
-<p>流量控制（Flow control）</p>
-</li>
-</ul>
-</li>
-<li>
-<p>差错控制</p>
-<ul>
-<li>
-<p>差错检测（Error Detection）</p>
-</li>
-<li>
-<p>差错纠正（Error Correction）</p>
-</li>
-</ul>
-</li>
-<li>
-<p>流量控制</p>
-<ul>
-<li>流量控制：控制发送方发送的帧的速率别太快，让接收方来得及接受</li>
-</ul>
-</li>
-<li>
-<p>半双工和全双工：</p>
-<ul>
-<li>
-<p>Half-duplex（半双工），链路两端的节点都具备发送和接受的能力，但同一时刻只能有一个方向在传输</p>
-</li>
-<li>
-<p>Full-duplex（全双工），链路的两端都可以同时发送和接受数据，并且互不干扰</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="封装成帧">封装成帧</h4>
-<p>字符计数法（Character count）：</p>
-<ul>
-<li>在每一个帧的开头，用一个 <strong>定长计数字段</strong> 表示帧长</li>
-</ul>
-<p>字节填充法（Flag Bytes with Byte Stuffing）：</p>
-<ul>
-<li>
-<p>控制字符 <code>SOH</code>（start of header）</p>
-</li>
-<li>
-<p>控制字符 <code>EOT</code>（end of transmission）</p>
-</li>
-<li>
-<p>转义字符 <code>ESC</code>（Escape Character），把和控制字符，<strong>或者转义字符</strong> 一样的字符转义，表示其为普通的数据</p>
-</li>
-</ul>
-<p>零比特填充法（Bit Stuffing）：</p>
-<ul>
-<li>
-<p>特定比特串表示帧的开始/结束</p>
-</li>
-<li>
-<p>发送方每当遇到连续的 <code>5</code> 个 <code>1</code> 时，就填充一个 <code>0</code></p>
-</li>
-<li>
-<p>接收方每遇到连续的 <code>5</code> 个 <code>1</code>，就删掉后面的 <code>0</code></p>
-</li>
-</ul>
-<h4 id="错误检测">错误检测</h4>
-<p>错误类型（Type of Error）：</p>
-<ul>
-<li>
-<p>single-bit error</p>
-</li>
-<li>
-<p>burst error</p>
-</li>
-</ul>
-<p>检错编码</p>
-<ul>
-<li>
-<p>错误检测（Error Detection）：</p>
-<ul>
-<li>
-<p>奇偶校验码（Parity Checking）</p>
-</li>
-<li>
-<p>循环冗余校验码 CRC</p>
-</li>
-</ul>
-</li>
-<li>
-<p>错误纠正</p>
-<ul>
-<li>
-<p><strong>Block Coding</strong></p>
-</li>
-<li>
-<p><strong>Hamming Code</strong></p>
-</li>
-</ul>
+<p>Attention 计算慢：</p>
+<p>self-attention 会产生 N * N 的矩阵，反复读写慢的显存</p>
+<p>Flash-Attention：采用分块思想，分块在快的 SRAM 中计算，用 online softmax 边算边修正临时结果，最后只写一次显存</p>
 </li>
 </ul>
 
@@ -633,32 +441,15 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%AC%94%E8%AE%B0/" class="category-chain-item">专业课笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="print-no-link">#计算机网络</a>
+        <a href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/" class="print-no-link">#图像生成</a>
+      
+        <a href="/tags/AIGC/" class="print-no-link">#AIGC</a>
+      
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="print-no-link">#深度学习</a>
       
     </div>
   
@@ -670,8 +461,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计算机网络笔记.md</div>
-      <div>http://example.com/2026/03/26/计算机网络笔记/</div>
+      <div>图像生成笔记</div>
+      <div>http://example.com/2026/03/31/Diffusion_model/</div>
     </div>
     <div class="license-meta">
       
@@ -683,7 +474,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 26, 2026</div>
+          <div>March 31, 2026</div>
         </div>
       
       
@@ -715,15 +506,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/03/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" title="操作系统笔记">
+                      <a href="/2026/03/31/transformer-%E7%AC%94%E8%AE%B0/" title="transformer 笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统笔记</span>
+                        <span class="hidden-mobile">transformer 笔记</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2026/03/30/%E8%A7%82%E7%9C%8B%E7%AC%94%E8%AE%B0/" title="观看笔记">
+                        <span class="hidden-mobile">观看笔记</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
