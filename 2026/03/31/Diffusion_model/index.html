@@ -21,13 +21,13 @@
   
     <meta name="description" content="要面试了，突击一把图像生成加速">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图像生成笔记">
+<meta property="og:title" content="Diffusion Model 学习笔记">
 <meta property="og:url" content="http://example.com/2026/03/31/Diffusion_model/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="要面试了，突击一把图像生成加速">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-31T02:10:13.000Z">
-<meta property="article:modified_time" content="2026-04-07T09:48:20.341Z">
+<meta property="article:modified_time" content="2026-04-08T08:32:34.722Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="AIGC">
 <meta property="article:tag" content="图像生成">
@@ -36,7 +36,7 @@
   
   
   
-  <title>图像生成笔记 - Hexo</title>
+  <title>Diffusion Model 学习笔记 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -73,7 +73,6 @@
 
 
   
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css">
 
 
 
@@ -311,7 +310,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="图像生成笔记"></span>
+            <span id="subtitle" data-typed-text="Diffusion Model 学习笔记"></span>
           
         </div>
 
@@ -384,7 +383,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">图像生成笔记</h1>
+            <h1 id="seo-header">Diffusion Model 学习笔记</h1>
             
             
               <div class="markdown-body">
@@ -413,7 +412,7 @@
 <p>训练一个 Auto-encoder：</p>
 <p>图片，经过一个 Encoder, 变成一个 later representation, 通过 decoder 还原原来的图片，让输入和输出越接近越好。</p>
 <p>训练完之后，就可以把这个 decoder 拿出来用，这个 decoder 就可以吃一个 later representation，还原一张图片</p>
-<p>later representation 是一张小图，或者一张人类看不懂的图（$h \times w \times c$），$c$ 表示的是 channel，表示在这图小图上每一个位置是用多少个数字来表示</p>
+<p>later representation 是一张小图，或者一张人类看不懂的图（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>×</mo><mi>w</mi><mo>×</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">h \times w \times c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>），<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> 表示的是 channel，表示在这图小图上每一个位置是用多少个数字来表示</p>
 <p>generation model 吃文字的 representation，产生一个压缩的结果，产生一个中间产物</p>
 <p>腾讯混元推理加速：</p>
 <ul>
@@ -445,9 +444,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/" class="print-no-link">#图像生成</a>
-      
         <a href="/tags/AIGC/" class="print-no-link">#AIGC</a>
+      
+        <a href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/" class="print-no-link">#图像生成</a>
       
         <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="print-no-link">#深度学习</a>
       
@@ -461,7 +460,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>图像生成笔记</div>
+      <div>Diffusion Model 学习笔记</div>
       <div>http://example.com/2026/03/31/Diffusion_model/</div>
     </div>
     <div class="license-meta">
@@ -618,12 +617,6 @@
 
     
 
-    
-      <div class="col-lg-7 mx-auto nopadding-x-md">
-        <div class="container custom mx-auto">
-          <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}]})})</script>
-        </div>
-      </div>
     
   </main>
 
@@ -848,8 +841,6 @@
 
 
   
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"></script>
 
 
 
