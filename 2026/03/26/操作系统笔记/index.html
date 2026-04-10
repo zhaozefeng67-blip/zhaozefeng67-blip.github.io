@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/2026/03/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84_01.jpeg">
 <meta property="og:image" content="http://example.com/2026/03/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84.jpeg">
 <meta property="article:published_time" content="2026-03-26T13:55:20.000Z">
-<meta property="article:modified_time" content="2026-04-09T10:18:29.150Z">
+<meta property="article:modified_time" content="2026-04-10T04:35:43.571Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
@@ -341,7 +341,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k words
+          14k words
         
       </span>
     
@@ -352,7 +352,7 @@
         
         
         
-          94 mins
+          119 mins
         
       </span>
     
@@ -620,16 +620,59 @@
 <hr>
 <ul>
 <li>
-<p>程序：是静态的，就是个存放在磁盘中的 <strong>可执行文件</strong></p>
+<p>程序：是静态的（passive），就是个存放在磁盘中的 <strong>可执行文件</strong></p>
 </li>
 <li>
-<p>进程：是动态的，是程序的一次执行过程。比如，打开 <code>QQ</code> 三次，就会出现 <code>3</code> 个进程，但 <code>QQ.exe</code> 为一个程序。</p>
+<p>进程：是动态的（active），是程序的一次执行过程（program in execution in memory）。一个程序（program）可以有多个进程。比如，打开 <code>QQ</code> 三次，就会出现 <code>3</code> 个进程，但 <code>QQ.exe</code> 为一个程序。</p>
 </li>
 <li>
 <p>进程包含：<code>PCB</code>，程序段、数据段。程序段：程序的代码。数据段：运行过程中产生的各种数据（如程序中定义的变量）</p>
+<p>期中考试回答：进程包括程序段（text section）、数据段（data section）、堆（heap）、栈（stack）</p>
+<p>堆：Containing memory dynamically allocated during run time</p>
+<p>栈：Containing temporary data e.g. local variables</p>
+<p>程序段：the program code</p>
+<p>数据段：Containing global variables and static variables.</p>
 </li>
 <li>
-<p><code>PCB</code> 是给操作系统用的，程序段、数据段是给进程自己用的</p>
+<p><code>PCB</code> 是给操作系统用的，程序段、数据段是给进程自己用的。</p>
+<p><code>PCB</code> 操作系统内核的数据结构（kernel data structure）</p>
+<p>存储在内存里</p>
+<p>对进程不可见（invisible to process itself）</p>
+<p>只能由操作系统内核修改（changed only by）</p>
+<p>每一个进程都有 <strong>唯一的</strong> PCB</p>
+</li>
+</ul>
+<h3 id="进程的创建">进程的创建</h3>
+<ul>
+<li>
+<p>当创建一个进程时，就创建新的的 PCB；进程结束（dies）后，删除对应的 PCB</p>
+</li>
+<li>
+<p>当创建好一个进程之后，就会创建一个主线程（Main Thread）。也可以创建多个线程，多个线程共享这个进程的 code（text section）、data（data section）、打开的 file 文件、<strong>以及 Heap（动态分配的内存）</strong>。但是不共享 registers、stack、PC</p>
+</li>
+<li>
+<p>Multitasking：指的是 <strong>多个进程能够“同时”在内存中，并且得到 CPU 的服务</strong></p>
+</li>
+<li>
+<p>子进程创建的程序：</p>
+<ul>
+<li>
+<p><code>pid_t pid = fork()</code>，虽然只调用了一次，但是会返回两次。</p>
+<ul>
+<li>
+<p>在子进程里面，返回 0</p>
+</li>
+<li>
+<p>在父进程里面，返回 子进程的 <code>pid</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>wait(&amp;status)</code>，父进程进入阻塞状态，当子进程 <code>exit()</code> 退出之后，即可唤醒父进程</p>
+<p>当唤醒父进程时，子进程的 <code>exit</code> 状态就会写入 <code>status</code>，状态为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">0/1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0/1</span></span></span></span></p>
+</li>
+</ul>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span>&#123;<br>    <span class="hljs-type">pid_t</span> pid;  <span class="hljs-comment">// PID of child. pid_t is the same as int</span><br>    <span class="hljs-type">int</span> status; <span class="hljs-comment">// Exit status of child.</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent: calling fork\n&quot;</span>);<br>    pid = fork(); <span class="hljs-comment">// New child process starts executing code from here.</span><br>    <span class="hljs-keyword">if</span>(pid &lt; <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// No child process created.</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent: fork failed\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// Parent process dies.</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pid == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">// Code only executed by the new child process.</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child: now running the same program as parent, doing exec\n&quot;</span>);<br>        <span class="hljs-built_in">execlp</span>(<span class="hljs-string">&quot;xcalc&quot;</span>, <span class="hljs-string">&quot;xcalc&quot;</span>, <span class="hljs-literal">NULL</span>);<br>        <span class="hljs-comment">// If exec succeeded, the new child now starts executing the code of</span><br>        <span class="hljs-comment">// the main function of the xcalc program.  The new child normally</span><br>        <span class="hljs-comment">// never executes the code below, unless exec failed.</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child: exec failed, die\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// Child process dies after failed exec.</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// Code only executed by the parent process.</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent: now sleeping and waiting for child %d to end\n&quot;</span>, pid);<br>        <span class="hljs-built_in">wait</span>(&amp;status);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent: finished waiting for child, child is dead\n&quot;</span>);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent: child exit status is %d\n&quot;</span>, status);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// Parent process dies.</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="进程的状态与转换">进程的状态与转换</h3>
@@ -689,7 +732,7 @@
 <ul>
 <li>进程控制主要实现进程的状态转换</li>
 </ul>
-<h4 id="原语">原语</h4>
+<h4 id="原语（Primitives）">原语（Primitives）</h4>
 <ul>
 <li>
 <p>进程控制使用“原语”实现</p>
@@ -792,7 +835,7 @@
 <p>进程是分配系统资源的单位（包括内存地址空间），因此 <strong>各个进程</strong> 拥有的 <strong>内存地址空间相互独立</strong>。例如，在手机上装了一个垃圾软件，总不能让垃圾软件读取微信的聊天记录等私密的信息吧</p>
 </li>
 </ul>
-<h4 id="共享存储">共享存储</h4>
+<h4 id="共享存储（shared-memory）">共享存储（shared memory）</h4>
 <ul>
 <li>
 <p>内存申请一个共享存储区，进程 P 和 Q 可以共享。当进程 P 访问共享存储区时，其他进程（例如进程 Q）不能访问共享存储区。即，为了避免出错，各个进程对共享空间的 <strong>访问</strong> 应该是互斥的。</p>
@@ -812,18 +855,18 @@
 </ul>
 </li>
 </ul>
-<h4 id="消息传递">消息传递</h4>
+<h4 id="消息传递（message-passing）">消息传递（message passing）</h4>
 <p>进程间的数据交换，以 <strong>格式化的信息</strong> （Message）为单位。进程通过操作系统提供的“发送消息/接收消息”两个 <strong>原语</strong> 进行数据交换</p>
 <ul>
 <li>
-<p>消息：消息头 + 消息体</p>
+<p>消息：消息头（发送进程 P 的 ID、接受进程 Q 的 ID） + 消息体</p>
 </li>
 <li>
-<p>直接通信方式：</p>
-<p>消息直接挂到 <strong>接受进程</strong> Q 的消息队列里面</p>
-<p>操作系统内核的地址空间，管理个各个进程的 PCB，进程 Q 的消息队列</p>
-<p>发送原语，send(Q, msg)，操作系统内核接收到 meg</p>
-<p>receive(p, &amp;meg)，接受原语</p>
+<p>直接通信方式（Direct Communication）：</p>
+<p>消息发送进程要指明接收进程 Q 的 ID</p>
+<p>首先在进程 P 的地址空间中，安装好消息 = 消息头 + 消息体</p>
+<p>然后使用发送原语 send(Q, msg)，把消息从进程 P 的地址空间中，发送到操作系统内核中 Q 的消息队列后。</p>
+<p>然后进程 Q 使用接受原语 receive(P, &amp;msg)，然后操作系统在 Q 的消息队列中检查哪个消息是从 P 发过来的，然后把这个消息 msg 从操作系统内核区复制到接收进程 Q 的内存地址空间。</p>
 </li>
 <li>
 <p>间接通信方式：</p>
@@ -832,6 +875,17 @@
 <p>进程 P 使用发送原语 send(A , meg)，往 <strong>信箱</strong> A 发送消息 meg</p>
 <p>进程 Q 使用接受原语，receive（A, &amp;meg)，从  <strong>信箱</strong> A 接受消息</p>
 <p>可以多个进程往同一个信箱 send 消息，也可以从多个进程从一个信箱中 receive 消息</p>
+</li>
+<li>
+<p>同步（synchronous）和异步（asynchronous）</p>
+<ul>
+<li>
+<p>Blocking is considered synchronous，sender 和 receiver 需要等（blocked）直到消息被接收</p>
+</li>
+<li>
+<p>non-blocking is considered asynchronous，sender 和 receiver 不会等，对于 receiver 来说，如果没消息，就接受空消息，直接走人</p>
+</li>
+</ul>
 </li>
 </ul>
 <h4 id="管道通信">管道通信</h4>
@@ -858,6 +912,27 @@
 <p>允许多个写进程，多个读进程，但系统会让各个读进程轮流从管道中读取数据</p>
 </li>
 </ul>
+<p>Ordinary （anonymous（匿名））pipes：</p>
+<ul>
+<li>
+<p>父进程创建管道和子进程通信</p>
+</li>
+<li>
+<p>单向的（unidirectional），需要父子关系</p>
+</li>
+<li>
+<p>必要时，可以创建两个管道</p>
+</li>
+</ul>
+<p>Named pipes：</p>
+<ul>
+<li>
+<p>在没有父子关系的时候，也可以通信</p>
+</li>
+<li>
+<p>双向的（bidirectional）</p>
+</li>
+</ul>
 <h3 id="信号">信号</h3>
 <hr>
 <p>好像是补充知识，先咕咕咕了……</p>
@@ -875,6 +950,22 @@
 </li>
 <li>
 <p>传统的进程间并发，需要切换进程的运行环境，系统开销大。引入线程之后，如果是同一进程内的线程切换，则不需要切换进程环境，系统开销小。</p>
+</li>
+</ul>
+<h3 id="并发与并行">并发与并行</h3>
+<h4 id="并发（Concurrently）">并发（Concurrently）</h4>
+<p>在单核 CPU 上，通过上下文切换（context switches）处理多个任务（tasks）</p>
+<h4 id="并行（Parallesim）">并行（Parallesim）</h4>
+<p>在多核 CPU 上，多个任务（tasks）同时得到执行（simultaneously）</p>
+<p>并行意味着（implies）并发，但是并发不意味着并行</p>
+<ul>
+<li>
+<p>数据并行（data parrallelism）：一份数据分成多份，放到不同核心上，<strong>执行相同的任务</strong></p>
+<p>例如：有一个长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 的数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>，计算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>+</mo><mi>b</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">c[i] = a[i] + b[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>。就可以把数据分成多份，然后放到多个核心上。</p>
+</li>
+<li>
+<p>任务并行（task parrallelism）：同一份数据，放到不同的核心上，<strong>执行不同的任务</strong></p>
+<p>例如：有一个长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 的数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>，计算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>+</mo><mi>b</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">c[i] = a[i] + b[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>∗</mo><mi>b</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">d[i] = a[i] * b[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mi mathvariant="normal">/</mi><mi>b</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">e[i] = a[i] / b[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mord">/</span><span class="mord mathnormal">b</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>。这时候就可以拿出 3 个核心，然后处理三个任务。</p>
 </li>
 </ul>
 <h3 id="线程的实现方式">线程的实现方式</h3>
